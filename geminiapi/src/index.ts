@@ -21,7 +21,11 @@ app.post('/api/generate', async (req, res) => {
   
   try {
     // Call the Google Gemini API
-    const response = await axios.post(
+    interface GeminiResponse {
+      candidates?: { content?: { parts?: { text?: string }[] } }[];
+    }
+
+    const response = await axios.post<GeminiResponse>(
       'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
       {
         contents: [{ parts: [{ text: prompt }] }]
