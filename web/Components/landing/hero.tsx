@@ -43,9 +43,10 @@ export default function Hero() {
 
       try {
         const response = await axios.post(
-          `${process.env.BACKEND_URL}/api/generate`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/generate`,
           { prompt: inputText }
         );
+        
         console.log("API Response:", response.data);
 
         // Extract both raw text and HTML content
